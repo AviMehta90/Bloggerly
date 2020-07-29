@@ -15,16 +15,18 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then(
             console.log('Listening to port 3000 \nServer Started');
         });
     }).catch((err)=>{
-        console.log(err);
+    console.log(err);
 });
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views/pages'));
 app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use(express.urlencoded({ extended: true}));
 
 
 app.get('/', (req, res)=>{
-    res.redirect('/blogs');
+    const blogs = []
+    res.render('index', {title: 'Home', blogs});
 });
 
 app.get('/about', (req, res)=>{
@@ -41,11 +43,29 @@ app.get('/blogs', (req, res)=>{
     });
 });
 
+app.post('/blogs', (req, res)=>{
+    const blog = new Blog(req.body);
+
+    blog.save().then((result)=>{
+        res.redirect('/blogs');
+    }).catch((err)=>{
+        console.log(err);
+    });
+});
+
 app.get('/blogs/create', (req, res)=>{
     res.render('blogs', {title: 'Create a blog'});
     console.log('/blogs requested');
 });
 
+
+app.get('/sample-blog', (req, res)=>{
+    Blog.findById('5f206a6165f8fb07b012d3ff').then((result)=>{
+        res.send(`<h3>${result}</h3>`);
+    }).catch((err)=>{
+        console.log(err);
+    });
+});
 
 
 

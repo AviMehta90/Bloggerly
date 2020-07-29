@@ -14,7 +14,7 @@
 
                 <section class="formwrapper">
 
-                    <form action="" class="form">
+                    <form action="/blogs" class="form" method="POST">
 
                         <div>
                             <label for="title">Title: </label>
@@ -22,22 +22,20 @@
                         </div>
                         <div>
                             <label for="snippet">Snippet: </label>
-                            <input type="email" name="snippet" id="emailForm">
+                            <input type="text" name="snippet" id="emailForm">
                         </div>
+                        <section  class="blogwrapper">
+                            <h4>Create your own blog here</h4>
+                            <br>
+                            <label for="body">Body</label>
+                            <textarea name="body" id="blogArea" placeholder="Hello, start from this line."></textarea>
+                        </section>
+    
+                        <button id="submitform">Submit</button>
                         
                     </form>
 
                 </section>
-
-                <section  class="blogwrapper">
-                    <h4>Create your own blog here</h4>
-                    <br>
-                    <label for="body">Body</label>
-                    <textarea name="body" id="blogArea" placeholder="Hello, start from this line."></textarea>
-                </section>
-
-
-                <button id="submitform">Submit</button>
 
             </div>
 
