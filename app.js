@@ -19,8 +19,8 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then(
 });
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'views/static')));
+app.set('views', path.join(__dirname, 'views/pages'));
+app.use(express.static(path.join(__dirname, 'static')));
 
 
 app.get('/', (req, res)=>{
@@ -28,26 +28,26 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/about', (req, res)=>{
-    res.render('pages/about', {title: 'About Us'});
+    res.render('about', {title: 'About Us'});
     console.log('/about requested');
 });
 
 
 app.get('/blogs', (req, res)=>{
     Blog.find().sort({createdAt : 1}).then((result)=>{
-        res.render('pages/index', {title: 'All Blogs', blogs: result})
+        res.render('index', {title: 'All Blogs', blogs: result})
     }).catch((err)=>{
         console.log(err);
     });
     app.get('/blogs/create', (req, res)=>{
-        res.render('pages/blogs', {title: 'Create a blog'});
+        res.render('blogs', {title: 'Create a blog'});
         console.log('/blogs requested');
     });
 });
 
-app.get('/create', (req, res)=>{
+// app.get('/create', (req, res)=>{
     
-});
+// });
 
 
 
