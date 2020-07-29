@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
+const ejs = require('ejs');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 
