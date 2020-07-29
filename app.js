@@ -20,7 +20,7 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then(
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views/pages'));
-app.use(express.static(path.join(__dirname, 'static')));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 
 app.get('/', (req, res)=>{
@@ -39,15 +39,12 @@ app.get('/blogs', (req, res)=>{
     }).catch((err)=>{
         console.log(err);
     });
-    app.get('/blogs/create', (req, res)=>{
-        res.render('blogs', {title: 'Create a blog'});
-        console.log('/blogs requested');
-    });
 });
 
-// app.get('/create', (req, res)=>{
-    
-// });
+app.get('/blogs/create', (req, res)=>{
+    res.render('blogs', {title: 'Create a blog'});
+    console.log('/blogs requested');
+});
 
 
 
@@ -60,7 +57,7 @@ app.get('/blogs', (req, res)=>{
 
 
 app.use((req, res)=>{
-    res.status(404).render('pages/404', {title: '404'});
+    res.status(404).render('404', {title: '404'});
     console.log('Invalid page requested');
 });
 
