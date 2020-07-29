@@ -19,7 +19,7 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then(
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use('/static', express.static(path.join(__dirname, 'views/static')));
+app.use(express.static(path.join(__dirname, 'views/static')));
 
 
 app.get('/', (req, res)=>{
