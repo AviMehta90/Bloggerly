@@ -27,6 +27,7 @@ app.use(express.urlencoded({ extended: true}));
 app.get('/', (req, res)=>{
     const blogs = []
     res.render('index', {title: 'Home', blogs});
+    console.log('/ requested');
 });
 
 app.get('/about', (req, res)=>{
@@ -51,6 +52,7 @@ app.post('/blogs', (req, res)=>{
     }).catch((err)=>{
         console.log(err);
     });
+
 });
 
 app.get('/blogs/create', (req, res)=>{
@@ -60,11 +62,13 @@ app.get('/blogs/create', (req, res)=>{
 
 
 app.get('/sample-blog', (req, res)=>{
-    Blog.findById('5f206a6165f8fb07b012d3ff').then((result)=>{
-        res.send(`<h3>${result}</h3>`);
+
+    Blog.findById('5f206a5426d81e07a05b2cf7').then((result)=>{
+        res.render('index', {title: 'Sample Blog', blogs: result})
     }).catch((err)=>{
         console.log(err);
     });
+    
 });
 
 
