@@ -1,0 +1,49 @@
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="css/blogs.css">
+    <body>
+
+        <%- include('../partials/header.ejs') %>
+
+        <main class="mainBody"> 
+            <section>
+                <p>This is A blog, It's the first blog page.</p>
+            </section>
+
+            <div class="createBlog">
+
+                <section class="formwrapper">
+
+                    <form action="" class="form">
+
+                        <div>
+                            <label for="title">Title: </label>
+                            <input type="text" name="title" id="nameForm">
+                        </div>
+                        <div>
+                            <label for="snippet">Snippet: </label>
+                            <input type="email" name="snippet" id="emailForm">
+                        </div>
+                        
+                    </form>
+
+                </section>
+
+                <section  class="blogwrapper">
+                    <h4>Create your own blog here</h4>
+                    <br>
+                    <label for="body">Body</label>
+                    <textarea name="body" id="blogArea" placeholder="Hello, start from this line."></textarea>
+                </section>
+
+
+                <button id="submitform">Submit</button>
+
+            </div>
+
+        </main>
+        
+        <%- include('../partials/footer.ejs') %>
+
+    </body>
+</html>

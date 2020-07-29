@@ -1,0 +1,40 @@
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+    <body>
+
+        <%- include('../partials/header.ejs') %>
+        
+        <main class="mainBody">
+
+            <h1>Hello World</h1>
+            <h2>First Server Side Page</h2>
+
+            <section class="content">
+                <h1>All blogs</h1>
+
+                <% if (blogs.length > 0) { %>
+
+                    <% blogs.forEach(blogs =>{ %>
+
+                        <div class="blog">
+
+                            <h3 class="blogTitle"><%= blogs.title %></h3>
+                            <p class="blogBody"><%= blogs.body %></p>
+
+                        </div>
+                    <% }) %>
+
+                <% } else { %>
+
+                    <div class="blog">
+                        <h3>There are no Blogs.</h3>
+                    </div>
+                <% } %>
+
+            </section>
+
+        </main>
+
+        <%- include('../partials/footer.ejs') %>
+    </body>
+</html>
