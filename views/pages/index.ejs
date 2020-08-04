@@ -18,9 +18,10 @@
 
                         <div class="blog">
 
-                            <h3 class="blogTitle"><%= blogs.title %></h3>
-                            <p class="blogBody"><%= blogs.body %></p>
-
+                            <a href="/blogs/<%= blogs._id %>" class="blogLink">
+                                <h3 class="blogTitle"><%= blogs.title %></h3>
+                                <p class="blogBody"><%= blogs.body %></p>
+                            </a>
                         </div>
                     <% }) %>
 

@@ -60,16 +60,45 @@ app.get('/blogs/create', (req, res)=>{
     console.log('/blogs requested');
 });
 
-
-app.get('/sample-blog', (req, res)=>{
-
-    Blog.findById('5f206a5426d81e07a05b2cf7').then((result)=>{
-        res.render('index', {title: 'Sample Blog', blogs: result})
+app.get('/blogs/:id', (req, res)=>{
+    const id = req.params.id;
+    Blog.findById(id).then((result)=>{
+        res.render('details', {title: 'Details', blogs: result})
     }).catch((err)=>{
         console.log(err);
     });
-    
 });
+
+app.delete('/blogs/:id', (req, res)=>{
+    const id = req.params.id;
+    Blog.findByIdAndDelete(id).then((result)=>
+        res.json({
+            redirect: '/blogs'
+        })).catch((err)=>{
+        console.log(err);
+    });
+});
+
+
+app.get('/sample-blog', (req, res)=>{
+
+    const id = Blog.findById();
+
+    if (id) {
+        id.then((result)=>{
+            res.render('index', {title: 'Sample Blog', blogs: result})
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }else{
+        app.use((req, res)=>{
+            res.status(404).render('404', {title: '404'});
+            console.log('Invalid page requested');
+        });
+    }
+});
+
+
 
 
 

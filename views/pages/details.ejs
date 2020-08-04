@@ -1,0 +1,22 @@
+<html lang="en">    
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/static/css/details.css"> 
+    <body>
+        <%- include('../partials/header.ejs') %> 
+
+
+        <main class="mainBody">
+
+            <h2><%= blogs.title %></h2>
+            <p><%= blogs.body %></p>
+            
+
+            <a class="delete" data-doc="<%= blogs._id %>">Delete</a>
+
+        </main>
+
+
+        <%- include('../partials/footer.ejs') %> 
+        <script src="/static/js/details.js"></script>
+    </body>
+</html>
