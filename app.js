@@ -82,20 +82,8 @@ app.delete('/blogs/:id', (req, res)=>{
 
 app.get('/sample-blog', (req, res)=>{
 
-    const id = Blog.findById();
-
-    if (id) {
-        id.then((result)=>{
-            res.render('index', {title: 'Sample Blog', blogs: result})
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }else{
-        app.use((req, res)=>{
-            res.status(404).render('404', {title: '404'});
-            console.log('Invalid page requested');
-        });
-    }
+    const blogs = []
+    res.render('index', {title: 'Sample Blog', blogs})
 });
 
 
@@ -113,37 +101,3 @@ app.use((req, res)=>{
     res.status(404).render('404', {title: '404'});
     console.log('Invalid page requested');
 });
-
-
-
-
-// app.get('/add', (req, res)=>{
-
-//     const blog = new Blog({
-//         title : 'New Blog',
-//         snippet : 'ABout my new blog.',
-//         body: 'More about my new blog.'
-//     });
-
-//     blog.save().then((result)=>{
-//         res.send(result);
-//         console.log('Document saved!');
-//     });
-
-// });
-
-// app.get('/all-blogs', (req, res)=>{
-//     Blog.find().then((result)=>{
-//         res.send(`${result}`);
-//     }).catch((err)=>{
-//         console.log(err);
-//     });
-// });
-
-// app.get('/sample-blog', (req, res)=>{
-//     Blog.findById('5f206a5426d81e07a05b2cf7').then((result)=>{
-//         res.send(`${result}`);
-//     }).catch((err)=>{
-//         console.log(err);
-//     });
-// });
