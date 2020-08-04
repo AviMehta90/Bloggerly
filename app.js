@@ -8,7 +8,7 @@ const Blog = require('./models/blog');
 
 const app = express();
 
-const dbURI = 'mongodb+srv://user1:qwerty1212@cluster1.3k1ri.gcp.mongodb.net/database-blogs?retryWrites=true&w=majority';
+const dbURIcloud = 'mongodb+srv://user1:qwerty1212@cluster1.3k1ri.gcp.mongodb.net/database-blogs?retryWrites=true&w=majority';
 const dbURIlocal = 'mongodb://localhost:27017/myapp';
 mongoose.connect(dbURIlocal, {useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
         console.log('Connection made with MongoDB');
